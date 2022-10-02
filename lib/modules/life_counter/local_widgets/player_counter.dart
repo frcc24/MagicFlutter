@@ -30,8 +30,8 @@ class PlayerScoreBoard extends GetView<LifeCounterController> {
               children: [
                 Text(
                   (player == 1)
-                      ? "${controller.p1Score.value}"
-                      : "${controller.p2Score.value}",
+                      ? "Opponent Life ${controller.p2Score.value}"
+                      : "Opponent Life ${controller.p1Score.value}",
                   style: const TextStyle(
                     fontSize: 14,
                     fontWeight: FontWeight.bold,
@@ -42,12 +42,25 @@ class PlayerScoreBoard extends GetView<LifeCounterController> {
                   (player == 1)
                       ? "${controller.p1Score.value}"
                       : "${controller.p2Score.value}",
-                  style: const TextStyle(
-                    fontSize: 140,
+                  style: TextStyle(
+                    fontSize: (controller.p2Score.value >= 100) ||
+                            controller.p1Score.value >= 100
+                        ? 100
+                        : 120,
                     fontWeight: FontWeight.bold,
                     color: Colors.white70,
                   ),
                 ),
+                TextButton(
+                    onPressed: () {
+                      (player == 1)
+                          ? controller.p1Score.value = 0
+                          : controller.p2Score.value = 0;
+                    },
+                    child: Text(
+                      "Reset",
+                      style: TextStyle(color: Colors.blueAccent.withAlpha(90)),
+                    ))
               ],
             ),
           ),
