@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:magic_counter_lh/modules/life_counter/life_counter_page.dart';
-
-import 'modules/routes/pages.dart';
+import 'package:magic_counter_lh/routes/pages.dart';
 
 void main() {
   runApp(const MagicCounterApp());
