@@ -23,9 +23,7 @@ class PlayerScoreBoard extends GetView<LifeCounterController> {
           ],
         ),
         Expanded(
-          child: Obx(
-            () => MidColumn(player: player, controller: controller),
-          ),
+          child: MidColumn(player: player, controller: controller),
         ),
         Column(
           mainAxisSize: MainAxisSize.max,
@@ -52,47 +50,49 @@ class MidColumn extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisSize: MainAxisSize.max,
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      children: [
-        Text(
-          (player == 1)
-              ? "Opponent Life ${controller.p2Score.value}"
-              : "Opponent Life ${controller.p1Score.value}",
-          style: const TextStyle(
-            fontSize: 20,
-            letterSpacing: 2,
-            fontWeight: FontWeight.bold,
-            color: Colors.white70,
-            fontFamily: 'MtgFonts',
+    return Obx(
+      () => Column(
+        mainAxisSize: MainAxisSize.max,
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          Text(
+            (player == 1)
+                ? "Opponent Life ${controller.p2Score.value}"
+                : "Opponent Life ${controller.p1Score.value}",
+            style: const TextStyle(
+              fontSize: 20,
+              letterSpacing: 2,
+              fontWeight: FontWeight.bold,
+              color: Colors.white70,
+              fontFamily: 'MtgFonts',
+            ),
           ),
-        ),
-        Text(
-          (player == 1)
-              ? "${controller.p1Score.value}"
-              : "${controller.p2Score.value}",
-          style: TextStyle(
-            fontSize: controller.controlFontSize(player: player),
-            fontWeight: FontWeight.bold,
-            color: Colors.white70,
-            fontFamily: 'MtgFonts',
+          Text(
+            (player == 1)
+                ? "${controller.p1Score.value}"
+                : "${controller.p2Score.value}",
+            style: TextStyle(
+              fontSize: controller.controlFontSize(player: player),
+              fontWeight: FontWeight.bold,
+              color: Colors.white70,
+              fontFamily: 'MtgFonts',
+            ),
           ),
-        ),
-        TextButton(
-            onPressed: () {
-              controller.resetScore(player: player);
-            },
-            child: Text(
-              "Reset",
-              style: TextStyle(
-                fontSize: 18,
-                letterSpacing: 3,
-                color: Colors.blueAccent.withAlpha(90),
-                fontFamily: 'MtgFonts',
-              ),
-            ))
-      ],
+          TextButton(
+              onPressed: () {
+                controller.resetScore(player: player);
+              },
+              child: Text(
+                "Reset",
+                style: TextStyle(
+                  fontSize: 18,
+                  letterSpacing: 3,
+                  color: Colors.blueAccent.withAlpha(90),
+                  fontFamily: 'MtgFonts',
+                ),
+              ))
+        ],
+      ),
     );
   }
 }

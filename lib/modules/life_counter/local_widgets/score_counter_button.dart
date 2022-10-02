@@ -22,7 +22,7 @@ class ScoreCounterButton extends GetView<LifeCounterController> {
               : Colors.grey.withAlpha(80),
         ),
         onPressed: () {
-          AudioPlayer().play(AssetSource('/audio/btn2.mp3'));
+          AudioPlayer().play(AssetSource('audio/btn2.mp3'));
           controller.changePlayerScore(player: player, value: (value));
         },
         child: Text(

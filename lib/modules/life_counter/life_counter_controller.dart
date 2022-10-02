@@ -16,7 +16,7 @@ class LifeCounterController extends GetxController {
   }
 
   void resetScore({required int player}) {
-    AudioPlayer().play(AssetSource('/audio/btn1.mp3'));
-    (player == 1) ? p1Score.value = 0 : p2Score.value = 0;
+    AudioPlayer().play(AssetSource('audio/btn1.mp3'));
+    (player == 1) ? p1Score.value = 20 : p2Score.value = 20;
   }
 }

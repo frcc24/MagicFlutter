@@ -10,21 +10,36 @@ class LifeCounterPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
+      body: Stack(
         children: [
-          Transform.rotate(
-            alignment: Alignment.center,
-            angle: 3.14,
-            child: Container(
-              height: MediaQuery.of(context).size.height / 2,
-              color: Colors.red,
-              child: PlayerScoreBoard(player: 1),
-            ),
+          Column(
+            children: [
+              Transform.rotate(
+                alignment: Alignment.center,
+                angle: 3.14,
+                child: Container(
+                  height: MediaQuery.of(context).size.height / 2,
+                  color: Colors.red,
+                  child: PlayerScoreBoard(player: 1),
+                ),
+              ),
+              Container(
+                height: MediaQuery.of(context).size.height / 2,
+                color: Colors.black87,
+                child: PlayerScoreBoard(player: 2),
+              ),
+            ],
           ),
-          Container(
-            height: MediaQuery.of(context).size.height / 2,
-            color: Colors.black87,
-            child: PlayerScoreBoard(player: 2),
+          Center(
+            child: IconButton(
+              splashColor: Colors.blueAccent,
+              icon: const Icon(
+                Icons.settings,
+                color: Colors.white70,
+                size: 28,
+              ),
+              onPressed: () {},
+            ),
           ),
         ],
       ),
