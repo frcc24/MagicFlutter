@@ -24,45 +24,7 @@ class PlayerScoreBoard extends GetView<LifeCounterController> {
         ),
         Expanded(
           child: Obx(
-            () => Column(
-              mainAxisSize: MainAxisSize.max,
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Text(
-                  (player == 1)
-                      ? "Opponent Life ${controller.p2Score.value}"
-                      : "Opponent Life ${controller.p1Score.value}",
-                  style: const TextStyle(
-                    fontSize: 14,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white70,
-                  ),
-                ),
-                Text(
-                  (player == 1)
-                      ? "${controller.p1Score.value}"
-                      : "${controller.p2Score.value}",
-                  style: TextStyle(
-                    fontSize: (controller.p2Score.value >= 100) ||
-                            controller.p1Score.value >= 100
-                        ? 100
-                        : 120,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white70,
-                  ),
-                ),
-                TextButton(
-                    onPressed: () {
-                      (player == 1)
-                          ? controller.p1Score.value = 0
-                          : controller.p2Score.value = 0;
-                    },
-                    child: Text(
-                      "Reset",
-                      style: TextStyle(color: Colors.blueAccent.withAlpha(90)),
-                    ))
-              ],
-            ),
+            () => MidColumn(player: player, controller: controller),
           ),
         ),
         Column(
@@ -73,6 +35,63 @@ class PlayerScoreBoard extends GetView<LifeCounterController> {
             ScoreCounterButton(player: player, value: -5),
           ],
         ),
+      ],
+    );
+  }
+}
+
+class MidColumn extends StatelessWidget {
+  const MidColumn({
+    Key? key,
+    required this.player,
+    required this.controller,
+  }) : super(key: key);
+
+  final int player;
+  final LifeCounterController controller;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      mainAxisSize: MainAxisSize.max,
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: [
+        Text(
+          (player == 1)
+              ? "Opponent Life ${controller.p2Score.value}"
+              : "Opponent Life ${controller.p1Score.value}",
+          style: const TextStyle(
+            fontSize: 20,
+            letterSpacing: 2,
+            fontWeight: FontWeight.bold,
+            color: Colors.white70,
+            fontFamily: 'MtgFonts',
+          ),
+        ),
+        Text(
+          (player == 1)
+              ? "${controller.p1Score.value}"
+              : "${controller.p2Score.value}",
+          style: TextStyle(
+            fontSize: controller.controlFontSize(player: player),
+            fontWeight: FontWeight.bold,
+            color: Colors.white70,
+            fontFamily: 'MtgFonts',
+          ),
+        ),
+        TextButton(
+            onPressed: () {
+              controller.resetScore(player: player);
+            },
+            child: Text(
+              "Reset",
+              style: TextStyle(
+                fontSize: 18,
+                letterSpacing: 3,
+                color: Colors.blueAccent.withAlpha(90),
+                fontFamily: 'MtgFonts',
+              ),
+            ))
       ],
     );
   }
