@@ -3,7 +3,7 @@ import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:magic_counter_lh/modules/life_counter/life_counter_controller.dart';
 import 'package:magic_counter_lh/modules/life_counter/local_widgets/score_counter_button.dart';
 
-class PlayerScoreBoard extends GetView<LifeCounterController> {
+class PlayerScoreBoard extends GetView<GetXLifeCounterController> {
   int player;
   PlayerScoreBoard({
     required this.player,
@@ -46,7 +46,7 @@ class MidColumn extends StatelessWidget {
   }) : super(key: key);
 
   final int player;
-  final LifeCounterController controller;
+  final GetXLifeCounterController controller;
 
   @override
   Widget build(BuildContext context) {

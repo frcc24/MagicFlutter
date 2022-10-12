@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/src/simple/get_view.dart';
 import 'package:magic_counter_lh/modules/life_counter/life_counter_controller.dart';
 
-class ScoreCounterButton extends GetView<LifeCounterController> {
+class ScoreCounterButton extends GetView<GetXLifeCounterController> {
   int value;
   int player;
 
@@ -29,7 +29,7 @@ class ScoreCounterButton extends GetView<LifeCounterController> {
           value > 0 ? "+$value" : "$value",
           style: const TextStyle(
             fontWeight: FontWeight.bold,
-            fontSize: 24,
+            fontSize: 30,
             fontFamily: 'MtgFonts',
             color: Colors.white70,
           ),

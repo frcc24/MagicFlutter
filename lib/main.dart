@@ -4,13 +4,13 @@ import 'package:magic_counter_lh/modules/life_counter/life_counter_page.dart';
 import 'package:magic_counter_lh/routes/pages.dart';
 
 void main() {
-  runApp(const MagicCounterApp());
+  runApp(MagicCounterApp());
 }
 
 class MagicCounterApp extends StatefulWidget {
   final String? initialRoute;
 
-  const MagicCounterApp({
+  MagicCounterApp({
     this.initialRoute,
   });
 

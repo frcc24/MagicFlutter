@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
-import 'package:magic_counter_lh/modules/life_counter/life_counter_controller.dart';
-import 'package:magic_counter_lh/modules/life_counter/life_counter_page.dart';
+
+import '../modules/modules.dart';
 
 List<GetPage> getAppPages() {
   return [
@@ -8,8 +8,16 @@ List<GetPage> getAppPages() {
     GetPage<void>(
       name: LifeCounterPage.ROUTE,
       page: () => const LifeCounterPage(),
-      binding: BindingsBuilder<void>(() => Get.lazyPut<LifeCounterController>(
-          () => LifeCounterController(),
+      binding: BindingsBuilder<void>(() =>
+          Get.lazyPut<GetXLifeCounterController>(
+              () => GetXLifeCounterController(p1Score: 20.obs, p2Score: 20.obs),
+              fenix: true)),
+    ),
+    GetPage<void>(
+      name: SettingsPage.ROUTE,
+      page: () => SettingsPage(),
+      binding: BindingsBuilder<void>(() => Get.lazyPut<SettingsPageController>(
+          () => SettingsPageController(),
           fenix: true)),
     ),
   ];
