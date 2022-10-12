@@ -21,18 +21,27 @@ class SettingsPage extends GetView<SettingsController> {
             child: Column(
               children: [
                 OptionSelector(
+                  type: 1.obs,
                   title: "Select Max HP".obs,
-                  options: ["20", "30", "40"],
+                  options: const ["20", "30", "40"],
                   selectedItem: "20".obs,
                 ),
                 OptionSelector(
+                  type: 2.obs,
+                  title: "Select Orientation".obs,
+                  options: const ["Vertical", "Horizontal"],
+                  selectedItem: "Vertical".obs,
+                ),
+                OptionSelector(
+                  type: 3.obs,
                   title: "Sound ON/OFF".obs,
-                  options: ["ON", "OFF"],
+                  options: const ["ON", "OFF"],
                   selectedItem: "OFF".obs,
                 ),
                 OptionSelector(
+                  type: 4.obs,
                   title: "Players".obs,
-                  options: ["2", "3", "4"],
+                  options: const ["2", "3", "4"],
                   selectedItem: "2".obs,
                 ),
               ],
@@ -47,10 +56,12 @@ class SettingsPage extends GetView<SettingsController> {
 class OptionSelector extends GetView<SettingsController> {
   RxString title;
   RxString selectedItem = "".obs;
+  RxInt type = 0.obs;
 
   List<String> options;
 
   OptionSelector({
+    required this.type,
     required this.title,
     required this.options,
     required this.selectedItem,
@@ -85,7 +96,7 @@ class OptionSelector extends GetView<SettingsController> {
                           ),
                           value: item,
                           onChanged: (value) {
-                            controller.setMaxHP(int.parse(item));
+                            controller.saveChanges(value: item, type: type);
                             selectedItem.value = value.toString();
                           },
                           groupValue: selectedItem.value,
