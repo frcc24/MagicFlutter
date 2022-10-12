@@ -2,26 +2,24 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../contracts/contracts.dart';
-import '../modules.dart';
 import 'local_widgets/local_widgets.dart';
 
 class SettingsPage extends GetView<SettingsController> {
   static const ROUTE = '/settings_page';
-  final maxHp;
 
-  SettingsPage({Key? key, this.maxHp}) : super(key: key);
+  const SettingsPage();
 
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
       onWillPop: () async {
-        debugPrint("WillPopScope on LifeCounterPage");
-        Get.offAllNamed(LifeCounterPage.ROUTE);
+        Get.back(result: controller.orientation);
+        // Get.toNamed(LifeCounterPage.ROUTE);
         return false;
       },
       child: Scaffold(
         appBar: AppBar(
-          title: Text("Settings"),
+          title: const Text("Settings"),
         ),
         body: SingleChildScrollView(
           child: Padding(

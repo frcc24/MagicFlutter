@@ -1,4 +1,3 @@
-import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/src/simple/get_view.dart';
 import 'package:magic_counter_lh/modules/life_counter/life_counter_controller.dart';
@@ -22,7 +21,6 @@ class ScoreCounterButton extends GetView<GetXLifeCounterController> {
               : Colors.grey.withAlpha(80),
         ),
         onPressed: () {
-          AudioPlayer().play(AssetSource('audio/btn2.mp3'));
           controller.changePlayerScore(player: player, value: (value));
         },
         child: Text(

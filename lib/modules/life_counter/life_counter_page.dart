@@ -16,13 +16,14 @@ class LifeCounterPage extends GetView<GetXLifeCounterController> {
       body: Obx(
         () => Stack(
           children: [
-            if (controller.orientation?.value != 'Vertical')
-              HorizontalScoreBoard()
-            else
-              VerticalScoreBoard(),
+            (controller.orientation?.value != 'Vertical')
+                ? HorizontalScoreBoard()
+                : VerticalScoreBoard(),
             Center(
               child: IconButton(
-                  splashColor: Colors.blueAccent,
+                  splashColor: (controller.orientation?.value != 'Vertical')
+                      ? Colors.blueAccent
+                      : Colors.grey,
                   icon: const Icon(
                     Icons.settings,
                     color: Colors.white70,
@@ -30,6 +31,7 @@ class LifeCounterPage extends GetView<GetXLifeCounterController> {
                   ),
                   onPressed: controller.openSettings),
             ),
+            Text(controller.orientation?.value ?? ''),
           ],
         ),
       ),

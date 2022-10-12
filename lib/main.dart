@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
+import 'package:magic_counter_lh/core/audio_helper.dart';
 import 'package:magic_counter_lh/modules/life_counter/life_counter_page.dart';
 import 'package:magic_counter_lh/routes/pages.dart';
 
@@ -8,6 +9,7 @@ import 'core/sharedPreferences.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Prefs.init(); // initialize here ! important
+  await AudioHelper.init();
   runApp(MagicCounterApp());
 }
 

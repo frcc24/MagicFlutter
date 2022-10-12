@@ -75,6 +75,7 @@ class GetXSettingsPageController implements SettingsController {
 
   @override
   Future<void> setSoundOnOff(String value) async {
+    orientation = value;
     await Prefs.setString(Const.SOUNDONOFF, value);
   }
 }
