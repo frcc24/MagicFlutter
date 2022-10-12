@@ -1,12 +1,15 @@
 import 'package:flutter/foundation.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:get/get_rx/src/rx_types/rx_types.dart';
 import 'package:magic_counter_lh/core/utils/constants.dart';
+import 'package:magic_counter_lh/modules/planechase/planechase_page.dart';
 
 import '../../contracts/settings_controller.dart';
 import '../../core/core.dart';
 
-class GetXSettingsPageController implements SettingsController {
+class GetXSettingsPageController extends GetxController
+    implements SettingsController {
   @override
   int? maxHP;
 
@@ -20,6 +23,7 @@ class GetXSettingsPageController implements SettingsController {
   String? soundOn;
 
   GetXSettingsPageController({required this.maxHP}) {
+    SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
     loadPreferences();
   }
 
@@ -77,5 +81,10 @@ class GetXSettingsPageController implements SettingsController {
   Future<void> setSoundOnOff(String value) async {
     orientation = value;
     await Prefs.setString(Const.SOUNDONOFF, value);
+  }
+
+  @override
+  void goToPlanechase() {
+    Get.toNamed(PlaneChasePage.ROUTE);
   }
 }

@@ -50,6 +50,10 @@ class SettingsPage extends GetView<SettingsController> {
                   options: const ["2", "3", "4"],
                   selectedItem: controller.numPlayers.toString().obs,
                 ),
+                ElevatedButton(
+                  onPressed: controller.goToPlanechase,
+                  child: Text('Planechase'),
+                ),
               ],
             ),
           ),

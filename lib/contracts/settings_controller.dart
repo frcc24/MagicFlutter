@@ -10,6 +10,8 @@ abstract class SettingsController {
     required this.maxHP,
   });
 
+  void goToPlanechase();
+
   bool loadPreferences();
 
   int setMaxHP(int value);
