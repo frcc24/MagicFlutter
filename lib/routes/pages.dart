@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 
+import '../contracts/settings_controller.dart';
 import '../modules/modules.dart';
 
 List<GetPage> getAppPages() {
@@ -16,8 +17,8 @@ List<GetPage> getAppPages() {
     GetPage<void>(
       name: SettingsPage.ROUTE,
       page: () => SettingsPage(),
-      binding: BindingsBuilder<void>(() => Get.lazyPut<SettingsPageController>(
-          () => SettingsPageController(),
+      binding: BindingsBuilder<void>(() => Get.lazyPut<SettingsController>(
+          () => GetXSettingsPageController(maxHP: 20),
           fenix: true)),
     ),
   ];

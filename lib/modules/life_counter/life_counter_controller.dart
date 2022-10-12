@@ -1,5 +1,6 @@
 import 'package:audioplayers/audioplayers.dart';
 import 'package:get/get.dart';
+import 'package:magic_counter_lh/modules/modules.dart';
 
 import '../../contracts/contracts.dart';
 
@@ -31,5 +32,8 @@ class GetXLifeCounterController extends GetxController implements LifeCounter {
   }
 
   @override
-  void openSettings() {}
+  void openSettings() {
+    // Get.toNamed<void>(ListaVacinacoesPage.ROUTE, arguments: {'openFichasSubmissionDialog': true});
+    Get.toNamed<void>(SettingsPage.ROUTE);
+  }
 }
