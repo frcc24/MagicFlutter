@@ -1,14 +1,19 @@
 import 'package:audioplayers/audioplayers.dart';
+import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
 import 'package:magic_counter_lh/modules/modules.dart';
 
 import '../../contracts/contracts.dart';
+import '../../core/core.dart';
 
 class GetXLifeCounterController extends GetxController implements LifeCounter {
   final RxInt p1Score;
   final RxInt p2Score;
+  RxString? orientation = 'Horizontal'.obs;
 
-  GetXLifeCounterController({required this.p1Score, required this.p2Score});
+  GetXLifeCounterController({required this.p1Score, required this.p2Score}) {
+    loadPrefs();
+  }
 
   @override
   int changePlayerScore({required int player, required int value}) {
@@ -35,5 +40,10 @@ class GetXLifeCounterController extends GetxController implements LifeCounter {
   void openSettings() {
     // Get.toNamed<void>(ListaVacinacoesPage.ROUTE, arguments: {'openFichasSubmissionDialog': true});
     Get.toNamed<void>(SettingsPage.ROUTE);
+  }
+
+  void loadPrefs() {
+    orientation?.value = Prefs.getString(Const.ORIENTATION);
+    debugPrint("Init Orientation ${orientation?.value}");
   }
 }

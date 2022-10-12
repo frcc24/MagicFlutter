@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../contracts/contracts.dart';
+import '../modules.dart';
 import 'local_widgets/local_widgets.dart';
 
 class SettingsPage extends GetView<SettingsController> {
@@ -12,40 +13,47 @@ class SettingsPage extends GetView<SettingsController> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("Settings"),
-      ),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Column(
-            children: [
-              OptionSelector(
-                type: 1.obs,
-                title: "Select Max HP".obs,
-                options: const ["20", "30", "40"],
-                selectedItem: controller.maxHP.toString().obs, //"20".obs,
-              ),
-              OptionSelector(
-                type: 2.obs,
-                title: "Select Orientation".obs,
-                options: const ["Vertical", "Horizontal"],
-                selectedItem: controller.orientation.toString().obs,
-              ),
-              OptionSelector(
-                type: 3.obs,
-                title: "Sound ON/OFF".obs,
-                options: const ["ON", "OFF"],
-                selectedItem: controller.soundOn.toString().obs, //"OFF".obs,
-              ),
-              OptionSelector(
-                type: 4.obs,
-                title: "Players".obs,
-                options: const ["2", "3", "4"],
-                selectedItem: controller.numPlayers.toString().obs,
-              ),
-            ],
+    return WillPopScope(
+      onWillPop: () async {
+        debugPrint("WillPopScope on LifeCounterPage");
+        Get.offAllNamed(LifeCounterPage.ROUTE);
+        return false;
+      },
+      child: Scaffold(
+        appBar: AppBar(
+          title: Text("Settings"),
+        ),
+        body: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Column(
+              children: [
+                OptionSelector(
+                  type: 1.obs,
+                  title: "Select Max HP".obs,
+                  options: const ["20", "30", "40"],
+                  selectedItem: controller.maxHP.toString().obs, //"20".obs,
+                ),
+                OptionSelector(
+                  type: 2.obs,
+                  title: "Select Orientation".obs,
+                  options: const ["Vertical", "Horizontal"],
+                  selectedItem: controller.orientation.toString().obs,
+                ),
+                OptionSelector(
+                  type: 3.obs,
+                  title: "Sound ON/OFF".obs,
+                  options: const ["ON", "OFF"],
+                  selectedItem: controller.soundOn.toString().obs, //"OFF".obs,
+                ),
+                OptionSelector(
+                  type: 4.obs,
+                  title: "Players".obs,
+                  options: const ["2", "3", "4"],
+                  selectedItem: controller.numPlayers.toString().obs,
+                ),
+              ],
+            ),
           ),
         ),
       ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
 import 'life_counter_controller.dart';
@@ -11,33 +12,37 @@ class LifeCounterPage extends GetView<GetXLifeCounterController> {
 
   @override
   Widget build(BuildContext context) {
-    //final scoreHorizontal = preferences.getDouble('scoreHorizontal');
-
     return Scaffold(
-      body: Stack(
-        children: [
-          VerticalScoreBoard(),
-          //if (scoreHorizontal) HorizontalScoreBoard() else VerticalScoreBoard(),
-          Center(
-            child: IconButton(
-                splashColor: Colors.blueAccent,
-                icon: const Icon(
-                  Icons.settings,
-                  color: Colors.white70,
-                  size: 28,
-                ),
-                onPressed: controller.openSettings),
-          ),
-        ],
+      body: Obx(
+        () => Stack(
+          children: [
+            if (controller.orientation?.value != 'Vertical')
+              HorizontalScoreBoard()
+            else
+              VerticalScoreBoard(),
+            Center(
+              child: IconButton(
+                  splashColor: Colors.blueAccent,
+                  icon: const Icon(
+                    Icons.settings,
+                    color: Colors.white70,
+                    size: 28,
+                  ),
+                  onPressed: controller.openSettings),
+            ),
+          ],
+        ),
       ),
     );
   }
 }
 
 class HorizontalScoreBoard extends StatelessWidget {
-  const HorizontalScoreBoard({
+  HorizontalScoreBoard({
     Key? key,
-  }) : super(key: key);
+  }) {
+    SystemChrome.setPreferredOrientations([DeviceOrientation.landscapeLeft]);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -59,9 +64,11 @@ class HorizontalScoreBoard extends StatelessWidget {
 }
 
 class VerticalScoreBoard extends StatelessWidget {
-  const VerticalScoreBoard({
+  VerticalScoreBoard({
     Key? key,
-  }) : super(key: key);
+  }) {
+    SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+  }
 
   @override
   Widget build(BuildContext context) {
