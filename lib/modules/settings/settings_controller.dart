@@ -74,12 +74,12 @@ class GetXSettingsPageController extends GetxController
 
   @override
   Future<void> setOrientation(String value) async {
+    orientation = value;
     await Prefs.setString(Const.ORIENTATION, value);
   }
 
   @override
   Future<void> setSoundOnOff(String value) async {
-    orientation = value;
     await Prefs.setString(Const.SOUNDONOFF, value);
   }
 

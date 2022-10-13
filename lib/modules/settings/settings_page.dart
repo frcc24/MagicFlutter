@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
 import '../../contracts/contracts.dart';
@@ -13,7 +14,16 @@ class SettingsPage extends GetView<SettingsController> {
   Widget build(BuildContext context) {
     return WillPopScope(
       onWillPop: () async {
+        debugPrint('Settings ${controller.orientation}');
+
+        (controller.orientation == 'Vertical')
+            ? SystemChrome.setPreferredOrientations(
+                [DeviceOrientation.portraitUp])
+            : SystemChrome.setPreferredOrientations(
+                [DeviceOrientation.landscapeLeft]);
+
         Get.back(result: controller.orientation);
+
         // Get.toNamed(LifeCounterPage.ROUTE);
         return false;
       },
