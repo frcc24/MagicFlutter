@@ -66,6 +66,7 @@ flutter:
   assets:
     - assets/audio/btn1.mp3
     - assets/audio/btn2.mp3
+    - assets/audio/rules.yaml
 
   fonts:
     - family: MtgFonts

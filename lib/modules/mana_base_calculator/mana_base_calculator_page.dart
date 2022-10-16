@@ -69,7 +69,8 @@ class ManaBaseCalculatorPage extends GetView<ManaBaseCalcController> {
               maxLines: 1,
             ),
             ElevatedButton(
-                onPressed: () => controller.calculate(lands: 0),
+                // onPressed: () => controller.calculate(lands: 0),
+                onPressed: () => controller.readAsset(),
                 child: Text('Calculate'))
           ],
         ),
@@ -77,5 +78,5 @@ class ManaBaseCalculatorPage extends GetView<ManaBaseCalcController> {
     );
   }
 
-  void onChanged(String? cpfCns) {}
+  void onChanged(String? txt) {}
 }

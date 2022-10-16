@@ -1,4 +1,6 @@
+import "package:flutter/services.dart" as s;
 import 'package:get/get.dart';
+import "package:yaml/yaml.dart";
 
 import '../../contracts/contracts.dart';
 
@@ -34,5 +36,16 @@ class ManaBaseCalcController extends GetxController
     };
 
     return result;
+  }
+
+  void readAsset() async {
+    final data = await s.rootBundle.loadString('assets/audio/rules.yaml');
+    final mapData = loadYaml(data);
+    final content = (mapData['Contents']);
+
+    content.forEach((title, contents) {
+      print('==== $title ====');
+      print('$contents');
+    });
   }
 }
