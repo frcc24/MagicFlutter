@@ -93,4 +93,9 @@ class GetXSettingsPageController extends GetxController
   void goToManaBaseCalculator() {
     Get.toNamed(ManaBaseCalculatorPage.ROUTE);
   }
+
+  @override
+  void goToRules() {
+    Get.toNamed(RulesPage.ROUTE);
+  }
 }

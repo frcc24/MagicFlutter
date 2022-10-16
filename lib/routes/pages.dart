@@ -39,5 +39,11 @@ List<GetPage> getAppPages() {
           () => ManaBaseCalcController(),
           fenix: true)),
     ),
+    GetPage<void>(
+      name: RulesPage.ROUTE,
+      page: () => RulesPage(),
+      binding: BindingsBuilder<void>(() =>
+          Get.lazyPut<RulesController>(() => RulesController(), fenix: true)),
+    ),
   ];
 }
