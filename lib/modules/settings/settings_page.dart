@@ -64,6 +64,10 @@ class SettingsPage extends GetView<SettingsController> {
                   onPressed: controller.goToPlanechase,
                   child: Text('Planechase'),
                 ),
+                ElevatedButton(
+                  onPressed: controller.goToManaBaseCalculator,
+                  child: Text('Mana Base Calculator'),
+                ),
               ],
             ),
           ),

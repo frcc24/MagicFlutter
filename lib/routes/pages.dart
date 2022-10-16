@@ -1,11 +1,9 @@
 import 'package:get/get.dart';
 import 'package:magic_counter_lh/core/sharedPreferences.dart';
 import 'package:magic_counter_lh/core/utils/constants.dart';
-import 'package:magic_counter_lh/modules/planechase/planechase_page.dart';
 
 import '../contracts/settings_controller.dart';
 import '../modules/modules.dart';
-import '../modules/planechase/planechase_controller.dart';
 
 List<GetPage> getAppPages() {
   return [
@@ -32,6 +30,13 @@ List<GetPage> getAppPages() {
       page: () => PlaneChasePage(),
       binding: BindingsBuilder<void>(() => Get.lazyPut<PlaneChaseController>(
           () => PlaneChaseController(),
+          fenix: true)),
+    ),
+    GetPage<void>(
+      name: ManaBaseCalculatorPage.ROUTE,
+      page: () => ManaBaseCalculatorPage(),
+      binding: BindingsBuilder<void>(() => Get.lazyPut<ManaBaseCalcController>(
+          () => ManaBaseCalcController(),
           fenix: true)),
     ),
   ];

@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:get/get_rx/src/rx_types/rx_types.dart';
 import 'package:magic_counter_lh/core/utils/constants.dart';
+import 'package:magic_counter_lh/modules/modules.dart';
 import 'package:magic_counter_lh/modules/planechase/planechase_page.dart';
 
 import '../../contracts/settings_controller.dart';
@@ -86,5 +87,10 @@ class GetXSettingsPageController extends GetxController
   @override
   void goToPlanechase() {
     Get.toNamed(PlaneChasePage.ROUTE);
+  }
+
+  @override
+  void goToManaBaseCalculator() {
+    Get.toNamed(ManaBaseCalculatorPage.ROUTE);
   }
 }

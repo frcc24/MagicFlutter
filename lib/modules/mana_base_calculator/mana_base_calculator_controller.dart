@@ -1,6 +1,9 @@
+import 'package:get/get.dart';
+
 import '../../contracts/contracts.dart';
 
-class ManaBaseCalcController implements ManaBaseCalculatorController {
+class ManaBaseCalcController extends GetxController
+    implements ManaBaseCalculatorController {
   @override
   Map<String, int> calculate(
       {int? black,

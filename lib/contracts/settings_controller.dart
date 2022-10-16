@@ -12,6 +12,8 @@ abstract class SettingsController {
 
   void goToPlanechase();
 
+  void goToManaBaseCalculator();
+
   bool loadPreferences();
 
   int setMaxHP(int value);
