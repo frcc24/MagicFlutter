@@ -19,8 +19,13 @@ class RulesPage extends GetView<RulesController> {
       body: Obx(
         () => SingleChildScrollView(
           child: Container(
+            alignment: Alignment.center,
             child: controller.isLoading.value
-                ? const CircularProgressIndicator()
+                ? const Center(
+                    child: Padding(
+                    padding: EdgeInsets.all(32.0),
+                    child: CircularProgressIndicator(),
+                  ))
                 : Column(
                     children: const [
                       //ContentAccordion(),

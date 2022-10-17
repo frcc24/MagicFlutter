@@ -31,7 +31,6 @@ class LifeCounterPage extends GetView<GetXLifeCounterController> {
                   ),
                   onPressed: controller.openSettings),
             ),
-            Text(controller.orientation?.value ?? ''),
           ],
         ),
       ),
