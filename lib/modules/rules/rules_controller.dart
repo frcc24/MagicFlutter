@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import "package:flutter/services.dart" as s;
+import 'package:flutter/services.dart' as s;
 import 'package:get/get.dart';
-import "package:yaml/yaml.dart";
+import 'package:yaml/yaml.dart';
 
 class RulesController extends GetxController {
   late dynamic mapData;
@@ -14,7 +14,8 @@ class RulesController extends GetxController {
   void readAsset() async {
     isLoading.value = true;
     final data = await s.rootBundle.loadString('assets/audio/rules.yaml');
-    mapData = loadYaml(data);
+    mapData = await loadYaml(data);
+    await Future<void>.delayed(const Duration(milliseconds: 500));
     isLoading.value = false;
   }
 
