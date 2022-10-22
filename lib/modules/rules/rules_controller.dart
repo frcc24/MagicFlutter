@@ -58,4 +58,23 @@ class RulesController extends GetxController {
 
     return list;
   }
+
+  List<Widget> getListSection({required String from, required String section}) {
+    List<Widget> list = <Widget>[];
+    final content = (mapData['Glossary'][section][from]);
+
+    content.forEach((title) {
+      list.add(
+        Align(
+          alignment: Alignment.centerLeft,
+          child: Padding(
+            padding: const EdgeInsets.symmetric(vertical: 5.0),
+            child: Text('$title'),
+          ),
+        ),
+      );
+    });
+
+    return list;
+  }
 }
