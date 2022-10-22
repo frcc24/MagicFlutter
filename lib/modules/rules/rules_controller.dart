@@ -21,18 +21,21 @@ class RulesController extends GetxController {
   List<Widget> getList({required String from}) {
     List<Widget> list = <Widget>[];
     final content = (mapData['Glossary']['1. Game Concepts'][from]);
-
-    content.forEach((title) {
-      list.add(
-        Align(
-          alignment: Alignment.centerLeft,
-          child: Padding(
-            padding: const EdgeInsets.symmetric(vertical: 8.0),
-            child: Text('$title'),
+    try {
+      content.forEach((title) {
+        list.add(
+          Align(
+            alignment: Alignment.centerLeft,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(vertical: 8.0),
+              child: Text('$title'),
+            ),
           ),
-        ),
-      );
-    });
+        );
+      });
+    } catch (e) {
+      debugPrint(e.toString());
+    }
 
     return list;
   }
