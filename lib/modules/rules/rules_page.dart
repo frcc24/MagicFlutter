@@ -5,6 +5,7 @@ import 'package:magic_counter_lh/modules/rules/local_widgets/cardtypes_accordion
 import 'package:magic_counter_lh/modules/rules/local_widgets/parts_of_card_accordion.dart';
 
 import 'local_widgets/local_widgets.dart';
+import 'local_widgets/zones_accordion.dart';
 
 class RulesPage extends GetView<RulesController> {
   static const ROUTE = '/rules';
@@ -33,6 +34,7 @@ class RulesPage extends GetView<RulesController> {
                       GameConceptsAccordion(),
                       PartsOfACardAccordion(),
                       CardTypesAccordion(),
+                      ZonesAccordion(),
                     ],
                   ),
           ),
