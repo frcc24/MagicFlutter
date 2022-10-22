@@ -17,6 +17,9 @@ class RulesPage extends GetView<RulesController> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Rules'),
+        actions: [
+          IconButton(onPressed: () {}, icon: Icon(Icons.search_rounded))
+        ],
       ),
       body: Obx(
         () => SingleChildScrollView(
@@ -28,18 +31,38 @@ class RulesPage extends GetView<RulesController> {
                     padding: EdgeInsets.all(32.0),
                     child: CircularProgressIndicator(),
                   ))
-                : Column(
-                    children: const [
-                      //ContentAccordion(),
-                      GameConceptsAccordion(),
-                      PartsOfACardAccordion(),
-                      CardTypesAccordion(),
-                      ZonesAccordion(),
-                    ],
+                : Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Column(
+                      children: [
+                        DateSection(controller: controller),
+                        const GameConceptsAccordion(),
+                        const PartsOfACardAccordion(),
+                        const CardTypesAccordion(),
+                        const ZonesAccordion(),
+                      ],
+                    ),
                   ),
           ),
         ),
       ),
+    );
+  }
+}
+
+class DateSection extends StatelessWidget {
+  const DateSection({
+    Key? key,
+    required this.controller,
+  }) : super(key: key);
+
+  final RulesController controller;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Text(controller.getDateLastUpdate()),
     );
   }
 }

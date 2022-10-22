@@ -77,4 +77,13 @@ class RulesController extends GetxController {
 
     return list;
   }
+
+  String getDateLastUpdate() {
+    final list = [];
+    final content = (mapData['Date']);
+    content.forEach((title) {
+      list.add(title);
+    });
+    return list.elementAt(0);
+  }
 }
