@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:magic_counter_lh/modules/modules.dart';
 import 'package:magic_counter_lh/modules/rules/local_widgets/cardtypes_accordion.dart';
+import 'package:magic_counter_lh/modules/rules/local_widgets/casualvariants_accordion.dart';
 import 'package:magic_counter_lh/modules/rules/local_widgets/parts_of_card_accordion.dart';
 import 'package:magic_counter_lh/modules/rules/local_widgets/turnstructure_accordion.dart';
 
@@ -42,6 +43,7 @@ class RulesPage extends GetView<RulesController> {
                         const CardTypesAccordion(),
                         const ZonesAccordion(),
                         const TurnStructureAccordion(),
+                        const CasualVariantsAccordion(),
                       ],
                     ),
                   ),
