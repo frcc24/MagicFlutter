@@ -1,13 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:magic_counter_lh/modules/modules.dart';
-import 'package:magic_counter_lh/modules/rules/local_widgets/cardtypes_accordion.dart';
-import 'package:magic_counter_lh/modules/rules/local_widgets/casualvariants_accordion.dart';
-import 'package:magic_counter_lh/modules/rules/local_widgets/parts_of_card_accordion.dart';
-import 'package:magic_counter_lh/modules/rules/local_widgets/turnstructure_accordion.dart';
 
 import 'local_widgets/local_widgets.dart';
-import 'local_widgets/zones_accordion.dart';
 
 class RulesPage extends GetView<RulesController> {
   static const ROUTE = '/rules';
@@ -18,7 +13,7 @@ class RulesPage extends GetView<RulesController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Rules'),
+        title: const Text('Rules'),
         actions: [
           IconButton(onPressed: () {}, icon: Icon(Icons.search_rounded))
         ],
@@ -43,6 +38,7 @@ class RulesPage extends GetView<RulesController> {
                         const CardTypesAccordion(),
                         const ZonesAccordion(),
                         const TurnStructureAccordion(),
+                        const SpellsAccordion(),
                         const CasualVariantsAccordion(),
                       ],
                     ),
